@@ -147,18 +147,18 @@
 
 (defun make-blocks (texture-pack)
   (let ((blocks nil))
-    (loop for y from 0 to 3 do
-	 (loop for x from 0 to 9 do
+    (loop for y from 0 to 2 do
+	 (loop for x from 0 to 12 do
 	      (setf blocks (cons (make-instance 'block) blocks))
 	      (setf (drawable (car blocks))
 		    (sf:make-sprite-from-texture-rect
 		     texture-pack
 		     (sf:make-int-rect
-		      0 (mod (* x 72) 4) 64 32)))
+		      (mod (* x 70) 279) 0 64 32)))
 	      (sf:set-position
 	       (drawable (car blocks))
-	       (list (+ 15.0 (* x 100))
-		     (+ 20.0 (* y 30))))))
+	       (list (+ 15.0 (* x 80))
+		     (+ 20.0 (* y 50))))))
     blocks))
 
 (defun run-game ()
